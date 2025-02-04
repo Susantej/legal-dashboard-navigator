@@ -1,21 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Mail } from "lucide-react";
 import { toast } from "sonner";
-import { createClient } from '@supabase/supabase-js';
-
-// Initialize Supabase client with error handling
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Supabase credentials are missing. Please check your environment variables.');
-  toast.error('Authentication configuration error. Please contact support.');
-}
-
-const supabase = createClient(
-  supabaseUrl,
-  supabaseAnonKey
-);
+import { supabase } from "@/integrations/supabase/client";
 
 const LoginPage = () => {
   const handleGithubLogin = async () => {
