@@ -11,6 +11,12 @@ const Index = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Clean up URL hash if present
+    if (window.location.hash) {
+      // Remove the hash without triggering a page reload
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
     // Check current session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -31,7 +37,13 @@ const Index = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold">Loading...</h2>
+        </div>
+      </div>
+    );
   }
 
   if (!session) {
