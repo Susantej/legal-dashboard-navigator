@@ -19,7 +19,7 @@ const ResearchInterface = () => {
   };
 
   return (
-    <Card className="p-6 space-y-6">
+    <Card className="p-6 space-y-6 bg-white">
       <h2 className="text-2xl font-bold text-primary">Legal Research</h2>
       
       <div className="space-y-4">
@@ -28,10 +28,10 @@ const ResearchInterface = () => {
             Select Model
           </label>
           <Select onValueChange={setSelectedModel} value={selectedModel}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-white">
               <SelectValue placeholder="Choose a model" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white z-50">
               <SelectItem value="nlp">Pre-trained NLP Model</SelectItem>
               <SelectItem value="westlaw">WestlawAPI</SelectItem>
               <SelectItem value="caselaw">CaselawBERT</SelectItem>
@@ -47,7 +47,7 @@ const ResearchInterface = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Enter your legal research query..."
-            className="w-full"
+            className="w-full bg-white"
           />
         </div>
 
