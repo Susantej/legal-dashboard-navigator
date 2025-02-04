@@ -1,18 +1,45 @@
 import { Button } from "@/components/ui/button";
 import { Github, Mail } from "lucide-react";
 import { toast } from "sonner";
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client - it will automatically use the environment variables
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 const LoginPage = () => {
-  const handleGithubLogin = () => {
-    // OAuth login logic would go here
-    console.log("GitHub OAuth login initiated");
-    toast.error("GitHub OAuth integration not configured. Please set up OAuth credentials.");
+  const handleGithubLogin = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+      
+      if (error) throw error;
+    } catch (error) {
+      console.error('GitHub OAuth error:', error);
+      toast.error("Failed to sign in with GitHub. Please try again.");
+    }
   };
 
-  const handleGoogleLogin = () => {
-    // OAuth login logic would go here
-    console.log("Google OAuth login initiated");
-    toast.error("Google OAuth integration not configured. Please set up OAuth credentials.");
+  const handleGoogleLogin = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/`,
+        },
+      });
+      
+      if (error) throw error;
+    } catch (error) {
+      console.error('Google OAuth error:', error);
+      toast.error("Failed to sign in with Google. Please try again.");
+    }
   };
 
   return (
