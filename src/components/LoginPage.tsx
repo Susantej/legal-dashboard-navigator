@@ -9,7 +9,7 @@ const LoginPage = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'github',
         options: {
-          redirectTo: `${window.location.origin}/`,
+          redirectTo: window.location.origin,
         },
       });
       
@@ -17,7 +17,7 @@ const LoginPage = () => {
         if (error.message.includes('provider is not enabled')) {
           toast.error("GitHub login is not enabled. Please contact the administrator.");
         } else {
-          toast.error("Failed to sign in with GitHub. Please try again.");
+          toast.error(error.message || "Failed to sign in with GitHub. Please try again.");
         }
         console.error('GitHub OAuth error:', error);
       }
@@ -32,7 +32,7 @@ const LoginPage = () => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/`,
+          redirectTo: window.location.origin,
         },
       });
       
@@ -40,7 +40,7 @@ const LoginPage = () => {
         if (error.message.includes('provider is not enabled')) {
           toast.error("Google login is not enabled. Please contact the administrator.");
         } else {
-          toast.error("Failed to sign in with Google. Please try again.");
+          toast.error(error.message || "Failed to sign in with Google. Please try again.");
         }
         console.error('Google OAuth error:', error);
       }
