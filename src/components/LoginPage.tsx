@@ -13,7 +13,14 @@ const LoginPage = () => {
         },
       });
       
-      if (error) throw error;
+      if (error) {
+        if (error.message.includes('provider is not enabled')) {
+          toast.error("GitHub login is not enabled. Please contact the administrator.");
+        } else {
+          toast.error("Failed to sign in with GitHub. Please try again.");
+        }
+        console.error('GitHub OAuth error:', error);
+      }
     } catch (error) {
       console.error('GitHub OAuth error:', error);
       toast.error("Failed to sign in with GitHub. Please try again.");
@@ -29,7 +36,14 @@ const LoginPage = () => {
         },
       });
       
-      if (error) throw error;
+      if (error) {
+        if (error.message.includes('provider is not enabled')) {
+          toast.error("Google login is not enabled. Please contact the administrator.");
+        } else {
+          toast.error("Failed to sign in with Google. Please try again.");
+        }
+        console.error('Google OAuth error:', error);
+      }
     } catch (error) {
       console.error('Google OAuth error:', error);
       toast.error("Failed to sign in with Google. Please try again.");
