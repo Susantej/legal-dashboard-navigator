@@ -3,10 +3,18 @@ import { Github, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client - it will automatically use the environment variables
+// Initialize Supabase client with error handling
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('Supabase credentials are missing. Please check your environment variables.');
+  toast.error('Authentication configuration error. Please contact support.');
+}
+
 const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
+  supabaseUrl,
+  supabaseAnonKey
 );
 
 const LoginPage = () => {
