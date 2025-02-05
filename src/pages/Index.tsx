@@ -18,22 +18,30 @@ const Index = () => {
     }
 
     // Check current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setLoading(false);
-    });
-
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (session) {
-        toast.success("Successfully logged in!");
+    const checkSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (error) {
+        toast.error("Failed to get session. Please try again.");
+        console.error('Session error:', error);
+      } else {
+        console.log('Session:', session);
+        setSession(session);
       }
+      setLoading(false);
+    };
+
+    checkSession();
+
+    // Listen for changes to the auth state
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth state change:', event, session);
+      setSession(session);
     });
 
-    return () => subscription.unsubscribe();
+    // Cleanup subscription on unmount
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
   }, []);
 
   if (loading) {

@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Github, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const handleGithubLogin = async () => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
@@ -20,6 +23,8 @@ const LoginPage = () => {
           toast.error(error.message || "Failed to sign in with GitHub. Please try again.");
         }
         console.error('GitHub OAuth error:', error);
+      } else {
+        navigate("/dashboard"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error('GitHub OAuth error:', error);
@@ -43,6 +48,8 @@ const LoginPage = () => {
           toast.error(error.message || "Failed to sign in with Google. Please try again.");
         }
         console.error('Google OAuth error:', error);
+      } else {
+        navigate("/dashboard"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error('Google OAuth error:', error);
