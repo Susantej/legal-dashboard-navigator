@@ -24,6 +24,42 @@ export type Database = {
         }
         Relationships: []
       }
+      processed_documents: {
+        Row: {
+          content_type: string
+          created_at: string | null
+          file_path: string
+          id: string
+          original_filename: string
+          processed_data: Json | null
+          status: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          content_type: string
+          created_at?: string | null
+          file_path: string
+          id?: string
+          original_filename: string
+          processed_data?: Json | null
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          content_type?: string
+          created_at?: string | null
+          file_path?: string
+          id?: string
+          original_filename?: string
+          processed_data?: Json | null
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
