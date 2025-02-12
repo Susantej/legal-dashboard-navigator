@@ -19,9 +19,9 @@ import {
 
 const menuItems = [
   { title: "Home", icon: Home, url: "/" },
-  { title: "Legal Research AI", icon: Search, url: "/research" },
-  { title: "Document Generation AI", icon: FileText, url: "/documents" },
-  { title: "Case Status AI", icon: Database, url: "/cases" },
+  { title: "AI Document Generation", icon: FileText, url: "/documents" },
+  { title: "Legal AI Research", icon: Search, url: "/research" },
+  { title: "Case Status", icon: Database, url: "/cases" },
   { title: "Encrypted Libraries", icon: Lock, url: "/libraries" },
   { title: "Settings", icon: Settings, url: "/settings" },
 ];

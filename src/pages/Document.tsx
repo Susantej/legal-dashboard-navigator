@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Upload, FileText, Loader2 } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
@@ -13,6 +14,9 @@ interface DocumentUpload {
     location: string;
     filingDate: string;
     amounts: string[];
+    judgeName?: string;
+    plaintiffs?: string;
+    defendants?: string;
   },
   document: {
     id: string;
