@@ -8,7 +8,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
-    <SidebarProvider>
+    <SidebarProvider> 
       <div className="min-h-screen flex w-full">
         <DashboardSidebar />
         <main className="flex-1 p-6 bg-gray-50">
