@@ -49,7 +49,7 @@ const LoginPage = () => {
         }
         console.error('Google OAuth error:', error);
       } else {
-        navigate("/dashboard"); // Redirect to the dashboard
+        navigate("/courtney-sessions"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error('Google OAuth error:', error);
