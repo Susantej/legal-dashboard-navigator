@@ -24,7 +24,7 @@ const LoginPage = () => {
         }
         console.error('GitHub OAuth error:', error);
       } else {
-        navigate("/dashboard"); // Redirect to the dashboard
+        navigate("/courtney-sessions"); // Redirect to the dashboard
       }
     } catch (error) {
       console.error('GitHub OAuth error:', error);
