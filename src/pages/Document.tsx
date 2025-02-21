@@ -15,13 +15,19 @@ interface DocumentUpload {
     filingDate: string;
     amounts: string[];
     judgeName?: string;
-    plaintiffs?: string;
-    defendants?: string;
+    plaintiffs?: string[];
+    defendants?: string[];
+    claimants?: string[];
   },
   document: {
     id: string;
     structuredData: {
       extractedText: string;
+      analysis: {
+        date: string;
+        summary: string;
+        caseNumber: string;
+      }
     }
   }
 }
@@ -55,7 +61,7 @@ const Document = () => {
 
       if (response.status == 201) {
         setAnalysis(response.data);
-        toast.success("File uploaded and analyzed successfully!");
+        toast.success(response.data.message);
         console.log(response.data);
       } else {
         toast.error(response.data.message);
@@ -140,11 +146,11 @@ const Document = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-gray-500">Case Number</h3>
-                    <p className="mt-1 text-lg">{analysis.analysis?.amounts || "N/A"}</p>
+                    <p className="mt-1 text-lg">{analysis.document?.structuredData?.analysis?.caseNumber || "N/A"}</p>
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-gray-500">Filing Date</h3>
-                    <p className="mt-1 text-lg">{analysis.analysis?.filingDate || "N/A"}</p>
+                    <p className="mt-1 text-lg">{analysis.document?.structuredData?.analysis?.date || "N/A"}</p>
                   </div>
                 </div>
 
@@ -152,10 +158,18 @@ const Document = () => {
                   <h3 className="text-sm font-medium text-gray-500">Parties</h3>
                   <div className="mt-2 space-y-2">
                     <p className="text-sm">
-                      <span className="font-medium">Plaintiffs:</span> {analysis.analysis?.plaintiffs || "N/A"}
+                      <span className="font-medium">Plaintiffs:</span> {analysis.analysis?.plaintiffs ? analysis.analysis.plaintiffs.length > 1 ? analysis.analysis.plaintiffs.join(", ") : analysis.analysis.plaintiffs[0] : "N/A"}
                     </p>
                     <p className="text-sm">
-                      <span className="font-medium">Defendants:</span> {analysis.analysis?.defendants || "N/A"}
+                    <span className="font-medium">Claimants:</span> {analysis.analysis?.claimants ? analysis.analysis.claimants.length > 1 ? analysis.analysis.claimants.join(", ") : analysis.analysis.claimants[0] : "N/A"}
+                    </p>
+                    <p className="text-sm">
+                      <span className="font-medium">Defendants: </span>
+                      {analysis.analysis?.defendants
+                        ? analysis.analysis.defendants.length > 1
+                          ? analysis.analysis.defendants.join(", ")
+                          : analysis.analysis.defendants[0]
+                        : "N/A"}
                     </p>
                   </div>
                 </div>
@@ -185,10 +199,10 @@ const Document = () => {
               </div>
 
               <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Raw Text Preview</h3>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Document Summary</h3>
                 <div className="max-h-48 overflow-y-auto text-sm text-gray-600 whitespace-pre-line leading-relaxed">
-                  {analysis.document?.structuredData?.extractedText ? (
-                    analysis.document.structuredData.extractedText.split('\n').map((line, index) => (
+                  {analysis.document?.structuredData?.analysis?.summary ? (
+                    analysis.document.structuredData.analysis.summary.split('\n').map((line, index) => (
                       <p key={index} className="mb-2">{line}</p>
                     ))
                   ) : (

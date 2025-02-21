@@ -37,7 +37,7 @@ export function DashboardSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
+                    <a href={item.url} className="flex items-center cursor-pointer hover:bg-slate-100 gap-2">
                       <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>
                     </a>
