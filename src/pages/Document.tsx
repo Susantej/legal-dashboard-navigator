@@ -27,6 +27,7 @@ interface DocumentUpload {
         date: string;
         summary: string;
         caseNumber: string;
+        amount: string;
       }
     }
   }
@@ -177,18 +178,13 @@ const Document = () => {
                 <div className="border-t pt-4">
                   <h3 className="text-sm font-medium text-gray-500">Monetary Amounts</h3>
                   <div className="mt-2">
-                    {analysis.analysis?.amounts?.length > 0 ? (
-                      analysis.analysis.amounts.map((amount, index) => (
-                        <span
-                          key={index}
-                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-2"
-                        >
-                          ${amount}
-                        </span>
-                      ))
-                    ) : (
+                    {analysis.document?.structuredData?.analysis?.amount? 
+                        // 
+                          <p>{analysis.document.structuredData.analysis.amount}</p>
+                      
+                    :
                       "No amounts found"
-                    )}
+                    }
                   </div>
                 </div>
 
