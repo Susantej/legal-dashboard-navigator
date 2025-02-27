@@ -10,7 +10,12 @@ const Index = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const token = localStorage.getItem('token');
+
   useEffect(() => {
+    if(!token) {
+      window.location.href="/login"
+    }
     // Clean up URL hash if present
     if (window.location.hash) {
       // Remove the hash without triggering a page reload
@@ -53,6 +58,8 @@ const Index = () => {
       </div>
     );
   }
+
+  //Get token
 
   if (!session) {
     return <LoginPage />;

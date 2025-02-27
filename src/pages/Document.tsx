@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const apiUrl = import.meta.env.VITE_DOCUMENT_URL + "upload";
+const apiUrl = import.meta.env.VITE_DOCUMENT_URL + "documents/upload";
 
 interface DocumentUpload {
   analysis: {
@@ -58,7 +58,11 @@ const Document = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post(apiUrl, formData);
+      const response = await axios.post(apiUrl, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      });
 
       if (response.status == 201) {
         setAnalysis(response.data);
@@ -109,7 +113,7 @@ const Document = () => {
           <button
             onClick={handleUpload}
             disabled={loading || !file}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-2 px-4 bg-amber-800 text-white rounded-lg hover:bg-amber-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>

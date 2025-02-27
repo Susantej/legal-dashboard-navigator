@@ -7,6 +7,10 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Document from "./pages/Document";
 import DashboardLayout from "./components/DashboardLayout"; // Import DashboardLayout
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import UpdatePassword from "./pages/UpdatePassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +23,11 @@ const App = () => (
         <Routes> 
           <Route path="/" element={<Index />} />
           <Route path="/courtney-sessions" element={<DashboardLayout><Index /></DashboardLayout>} />
-          <Route path="/documents" element={<Document />} />
+          <Route path="/courtney-sessions/documents" element={<Document />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* Add this route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

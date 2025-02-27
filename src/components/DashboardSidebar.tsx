@@ -19,7 +19,7 @@ import {
 
 const menuItems = [
   { title: "Home", icon: Home, url: "/" },
-  { title: "AI Document Generation", icon: FileText, url: "/documents" },
+  { title: "AI Document Generation", icon: FileText, url: "/courtney-sessions/documents" },
   { title: "Legal AI Research", icon: Search, url: "/research" },
   { title: "Case Status", icon: Database, url: "/cases" },
   { title: "Encrypted Libraries", icon: Lock, url: "/libraries" },

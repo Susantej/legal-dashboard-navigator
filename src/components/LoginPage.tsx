@@ -7,55 +7,55 @@ import { supabase } from "@/integrations/supabase/client";
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleGithubLogin = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'github',
-        options: {
-          redirectTo: window.location.origin,
-        },
-      });
+  // const handleGithubLogin = async () => {
+  //   try {
+  //     const { error } = await supabase.auth.signInWithOAuth({
+  //       provider: 'github',
+  //       options: {
+  //         redirectTo: window.location.origin,
+  //       },
+  //     });
       
-      if (error) {
-        if (error.message.includes('provider is not enabled')) {
-          toast.error("GitHub login is not enabled. Please contact the administrator.");
-        } else {
-          toast.error(error.message || "Failed to sign in with GitHub. Please try again.");
-        }
-        console.error('GitHub OAuth error:', error);
-      } else {
-        navigate("/courtney-sessions"); // Redirect to the dashboard
-      }
-    } catch (error) {
-      console.error('GitHub OAuth error:', error);
-      toast.error("Failed to sign in with GitHub. Please try again.");
-    }
-  };
+  //     if (error) {
+  //       if (error.message.includes('provider is not enabled')) {
+  //         toast.error("GitHub login is not enabled. Please contact the administrator.");
+  //       } else {
+  //         toast.error(error.message || "Failed to sign in with GitHub. Please try again.");
+  //       }
+  //       console.error('GitHub OAuth error:', error);
+  //     } else {
+  //       navigate("/courtney-sessions"); // Redirect to the dashboard
+  //     }
+  //   } catch (error) {
+  //     console.error('GitHub OAuth error:', error);
+  //     toast.error("Failed to sign in with GitHub. Please try again.");
+  //   }
+  // };
 
-  const handleGoogleLogin = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin,
-        },
-      });
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     const { error } = await supabase.auth.signInWithOAuth({
+  //       provider: 'google',
+  //       options: {
+  //         redirectTo: window.location.origin,
+  //       },
+  //     });
       
-      if (error) {
-        if (error.message.includes('provider is not enabled')) {
-          toast.error("Google login is not enabled. Please contact the administrator.");
-        } else {
-          toast.error(error.message || "Failed to sign in with Google. Please try again.");
-        }
-        console.error('Google OAuth error:', error);
-      } else {
-        navigate("/courtney-sessions"); // Redirect to the dashboard
-      }
-    } catch (error) {
-      console.error('Google OAuth error:', error);
-      toast.error("Failed to sign in with Google. Please try again.");
-    }
-  };
+  //     if (error) {
+  //       if (error.message.includes('provider is not enabled')) {
+  //         toast.error("Google login is not enabled. Please contact the administrator.");
+  //       } else {
+  //         toast.error(error.message || "Failed to sign in with Google. Please try again.");
+  //       }
+  //       console.error('Google OAuth error:', error);
+  //     } else {
+  //       navigate("/courtney-sessions"); // Redirect to the dashboard
+  //     }
+  //   } catch (error) {
+  //     console.error('Google OAuth error:', error);
+  //     toast.error("Failed to sign in with Google. Please try again.");
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -70,20 +70,22 @@ const LoginPage = () => {
         </div>
         <div className="mt-8 space-y-4">
           <Button
-            onClick={handleGithubLogin}
+            // onClick={handleGithubLogin}
+            onClick={() => navigate("/signup")}
             className="w-full flex items-center justify-center gap-2"
             variant="outline"
           >
-            <Github className="h-5 w-5" />
-            Sign in with GitHub
+            {/* <Github className="h-5 w-5" /> */}
+            Sign up
           </Button>
           <Button
-            onClick={handleGoogleLogin}
+            // onClick={handleGoogleLogin}
+            onClick={() => navigate("/login")}
             className="w-full flex items-center justify-center gap-2"
             variant="outline"
           >
-            <Mail className="h-5 w-5" />
-            Sign in with Google
+            {/* <Mail className="h-5 w-5" /> */}
+            Login
           </Button>
         </div>
       </div>
