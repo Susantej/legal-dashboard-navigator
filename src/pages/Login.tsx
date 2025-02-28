@@ -140,12 +140,12 @@ const Login: React.FC = () => {
         <div className="space-y-2 text-center text-sm text-gray-600">
           <div>
             Don't have an account?{' '}
-            <Link to="/signup" className="font-medium text-amber-700 hover:text-amber-900">
+            <Link to="/signup" className="font-medium text-[#1a4699]">
               Register
             </Link>
           </div>
           <div>
-            <Link to="/reset-password" className="font-medium text-amber-700 hover:text-amber-900">
+            <Link to="/reset-password" className="font-medium text-[#1a4699]">
               Forgot Password?
             </Link>
           </div>

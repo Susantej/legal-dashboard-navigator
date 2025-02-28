@@ -152,7 +152,7 @@ const Register: React.FC = () => {
         
         <div className="text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-amber-700 hover:text-amber-900">
+          <Link to="/login" className="font-medium text-[#1a4699] ">
             Login
           </Link>
         </div>
