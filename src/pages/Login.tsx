@@ -129,7 +129,7 @@ const Login: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full px-4 py-2 text-white bg-amber-800 rounded-md hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+            className={`w-full px-4 py-2 text-black bg-[#ffd900] rounded-md hover:bg-[#e2c627] focus:outline-none focus:ring-2 focus:ring-offset-2 ${
               loading ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
@@ -140,12 +140,12 @@ const Login: React.FC = () => {
         <div className="space-y-2 text-center text-sm text-gray-600">
           <div>
             Don't have an account?{' '}
-            <Link to="/signup" className="font-medium text-amber-800 hover:text-blue-500">
+            <Link to="/signup" className="font-medium text-amber-700 hover:text-amber-900">
               Register
             </Link>
           </div>
           <div>
-            <Link to="/reset-password" className="font-medium text-amber-800 hover:text-blue-500">
+            <Link to="/reset-password" className="font-medium text-amber-700 hover:text-amber-900">
               Forgot Password?
             </Link>
           </div>

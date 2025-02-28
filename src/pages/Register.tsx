@@ -56,7 +56,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen py-6 bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="">
           <h2 className="text-2xl font-bold text-center text-gray-800">Register</h2>
@@ -142,7 +142,7 @@ const Register: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full px-4 py-2 text-white bg-amber-800 rounded-md hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+            className={`w-full px-4 py-2 text-black bg-[#ffd900] hover:bg-[#e2c627] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
               loading ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
@@ -152,7 +152,7 @@ const Register: React.FC = () => {
         
         <div className="text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-amber-800 hover:text-amber-700">
+          <Link to="/login" className="font-medium text-amber-700 hover:text-amber-900">
             Login
           </Link>
         </div>
